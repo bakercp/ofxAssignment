@@ -154,14 +154,18 @@ cost_t lap(int dim,
       colsol[j1] = i;
 
       if (i0 >= 0)           // minimum column j1 assigned earlier.
-        if (umin < usubmin) 
+        if (umin < usubmin)
+        {
           // put in current k, and go back to that k.
           // continue augmenting path i - j1 with i0.
-          free[--k] = i0; 
-        else 
+          free[--k] = i0;
+        }
+        else
+        {
           // no further augmenting reduction possible.
           // store i0 in list of free rows for next phase.
-          free[numfree++] = i0; 
+          free[numfree++] = i0;
+        }
     }
   }
   while (loopcnt < 2);       // repeat once.
