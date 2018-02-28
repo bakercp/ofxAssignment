@@ -51,7 +51,7 @@ public:
         
         cam.begin();
         float scale = ofGetWidth() / 2;
-        ofRotateY(ofGetElapsedTimef() * 16.);
+        ofRotateYDeg(ofGetElapsedTimef() * 16.);
         ofTranslate(-scale / 2, -scale / 2, -scale / 2);
         ofScale(scale, scale, scale);
         mesh.draw();

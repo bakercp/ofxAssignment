@@ -8,7 +8,7 @@ public:
     void setup() {
         int side = 32;
         int n = side * side;
-        
+
         // first, generate some data on a random walk modulo one
         initial.clear();
         ofVec2f cur;
@@ -19,7 +19,7 @@ public:
             cur.y = fmodf(cur.y, 1);
             initial.push_back(cur);
         }
-        
+
         // then build the grid
         grid = makeGrid(side, side);
 
@@ -27,12 +27,12 @@ public:
         auto start = ofGetElapsedTimeMillis();
         grid = solver.match(initial, grid);
         auto stop = ofGetElapsedTimeMillis();
-        
+
         // 625 points in 64ms
         // 1024 points in 211ms
         // 4096 points in 8841ms
         cout << grid.size() << " points in " <<  (stop - start) << "ms" << endl;
-        
+
         ofBackground(0);
         glPointSize(6);
     }

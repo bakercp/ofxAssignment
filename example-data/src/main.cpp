@@ -19,7 +19,7 @@ public:
         
         // then build the grid
         grid.clear();
-        for(const ofVec2f& point : makeGrid(120, 119)) {
+        for(const ofVec2f& point : makeGrid(10, 100)) {
             grid.push_back(vector<float>{point.x, point.y});
         }
         
@@ -27,7 +27,7 @@ public:
         if(data.size() > grid.size()) {
             data.resize(grid.size());
         }
-        
+
         // and finally, match the grid to the data
         auto start = ofGetElapsedTimeMillis();
         grid = solver.match(data, grid);
@@ -53,7 +53,7 @@ public:
         float t = ofMap(cos(ofGetElapsedTimef()), -1, 1, 0, 1);
         ofSeedRandom(0);
         for(int i = 0; i < n; i++) {
-            mesh.addVertex(ofVec2f(data[i][0] * t + grid[i][0] * (1 - t),
+            mesh.addVertex(ofVec3f(data[i][0] * t + grid[i][0] * (1 - t),
                                    data[i][1] * t + grid[i][1] * (1 - t)));
             mesh.addColor(ofFloatColor(1, data[i][0], data[i][1]));
         }
